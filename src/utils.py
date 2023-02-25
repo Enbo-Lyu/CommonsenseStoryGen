@@ -21,7 +21,10 @@ tf.app.flags.DEFINE_integer("top_k", 40, "Integer value controlling diversity.")
 FLAGS = tf.app.flags.FLAGS
 FLAGS.is_train = bool(FLAGS.is_train)
 FLAGS.cond = bool(FLAGS.cond)
-model_dir = os.path.expanduser(os.path.expandvars(FLAGS.model_dir))
+# model_dir = os.path.expanduser(os.path.expandvars(FLAGS.model_dir))
+model_dir = '/Users/lvenbo/CommonsenseStoryGen/models/124M'
+
+
 enc = encoder.get_encoder(model_dir)
 PAD_ID = enc.encoder['<|endoftext|>']
 hparams = model.default_hparams()
@@ -31,7 +34,9 @@ with open(os.path.join(model_dir, 'hparams.json')) as f:
 def load_data(path, fname, enc, label):
     data = []
     print('loading %s/%s ......' % (path, fname))
-    with open('%s/%s.txt' % (path, fname)) as f:
+    # with open('%s/%s.txt' % (path, fname)) as f:
+    with open('/Users/lvenbo/CommonsenseStoryGen/data/roc.txt') as f:
+
         tmp = []
         for k, line in enumerate(f):
             i = k + 1
@@ -43,7 +48,7 @@ def load_data(path, fname, enc, label):
     return data
 
 def load_data_kg(path, fname, enc):
-    with open("%s/%s.txt" % (path, fname)) as fin:
+    with open("%s/%s.txt" % ('/Users/lvenbo/CommonsenseStoryGen/data', fname)) as fin:
         data = [enc.encode(line.strip()) for line in fin]
     return data
 

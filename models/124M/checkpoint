@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/lvenbo/CommonsenseStoryGen/models/124M/checkpoint-00000001"
+all_model_checkpoint_paths: "/Users/lvenbo/CommonsenseStoryGen/models/124M/"
