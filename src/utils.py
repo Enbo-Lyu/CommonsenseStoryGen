@@ -23,7 +23,7 @@ FLAGS.is_train = bool(FLAGS.is_train)
 FLAGS.cond = bool(FLAGS.cond)
 # model_dir = os.path.expanduser(os.path.expandvars(FLAGS.model_dir))
 model_dir = '/Users/lvenbo/CommonsenseStoryGen/models/124M'
-
+abs_path_enbo = '/Users/lvenbo/CommonsenseStoryGen'
 
 enc = encoder.get_encoder(model_dir)
 PAD_ID = enc.encoder['<|endoftext|>']
@@ -33,9 +33,10 @@ with open(os.path.join(model_dir, 'hparams.json')) as f:
 
 def load_data(path, fname, enc, label):
     data = []
-    print('loading %s/%s ......' % (path, fname))
-    # with open('%s/%s.txt' % (path, fname)) as f:
-    with open('/Users/lvenbo/CommonsenseStoryGen/data/roc.txt') as f:
+    print('loading %s/%s/%s ......' % (abs_path_enbo, path, fname))
+    with open('%s/%s/%s.txt' % (abs_path_enbo,path, fname)) as f:
+
+    # with open('/Users/lvenbo/CommonsenseStoryGen/data/roc.txt') as f:
 
         tmp = []
         for k, line in enumerate(f):
